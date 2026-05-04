@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Сергеевич Тургенев | Жизнь и творчество</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefcf7;
+            color: #2c2418;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo, .nav-links, .hero-subtitle, .year {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header */
+        header {
+            background: #2c3e2b;
+            color: #fef5e6;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .logo span {
+            font-weight: 400;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fef5e6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #e0cba0;
+            border-bottom: 1px solid #e0cba0;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(120deg, #e9e0cf 0%, #d9cdb3 100%);
+            padding: 70px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* секции */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e9e0cf;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #8b6b3c;
+        }
+
+        /* хронология */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: #fffaf2;
+            padding: 20px 24px;
+            border-radius: 24px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            min-width: 100px;
+            color: #8b6b3c;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: #4a3b2a;
+        }
+
+        /* сетка произведений */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 28px rgba(0,0,0,0.1);
+        }
+
+        .work-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #2c3e2b;
+        }
+
+        .work-card .year {
+            font-size: 0.9rem;
+            color: #8b6b3c;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .work-card p {
+            font-size: 0.95rem;
+            color: #4a3b2a;
+        }
+
+        /* галереи (общий стиль) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+
+        .photo-card {
+            background: #f5ede1;
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .photo-card:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            background: #cdbc9d;
+        }
+
+        .photo-card p {
+            padding: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2c2418;
+        }
+
+        .illus {
+            background: #f5ede1;
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+        }
+
+        .illus-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background: #cdbc9d;
+        }
+
+        .illus p {
+            padding: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #2c3e2b;
+            color: #e9dfcf;
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+            .header-flex { flex-direction: column; }
+            .timeline-year { font-size: 1.3rem; min-width: 70px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-flex">
+        <div class="logo">Иван Тургенев <span>● литературный портал</span></div>
+        <ul class="nav-links">
+            <li><a href="#biography">Биография</a></li>
+            <li><a href="#works">Произведения</a></li>
+            <li><a href="#illu-gallery">Иллюстрации</a></li>
+            <li><a href="#photo-gallery">Фотографии</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Иван Сергеевич Тургенев</h1>
+        <div class="hero-subtitle">«Наши недостатки — продолжение наших достоинств»<br>Певец русской усадьбы, мастер психологического романа</div>
+    </div>
+</section>
+
+<div class="container" id="biography">
+    <section>
+        <h2 class="section-title">Жизненный путь</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1818</div>
+                <div class="timeline-content"><h3>Рождение в Орле</h3><p>9 ноября (28 октября по ст. ст.) родился в дворянской семье. Детство прошло в имении Спасское-Лутовиново.</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1833–1837</div>
+                <div class="timeline-content"><h3>Университетские годы</h3><p>Учился в Московском университете, затем перевёлся в Петербургский на философский факультет.</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1838–1841</div>
+                <div class="timeline-content"><h3>Берлинский период</h3><p>Слушал лекции по философии, истории, сблизился с кругом Н. Станкевича. Формирование европейского кругозора.</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1847–1852</div>
+                <div class="timeline-content"><h3>«Записки охотника»</h3><p>Цикл рассказов, осуждающих крепостное право, принёс писателю всероссийскую славу. Очерки публиковались в «Современнике».</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1850–1860</div>
+                <div class="timeline-content"><h3>Расцвет романного творчества</h3><p>Романы «Рудин» (1856), «Дворянское гнездо» (1859), «Накануне» (1860), «Отцы и дети» (1862).</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1867–1877</div>
+                <div class="timeline-content"><h3>Поздние романы и «стихотворения в прозе»</h3><p>«Дым», «Новь», а также лирические миниатюры «Стихотворения в прозе», ставшие вершиной позднего творчества.</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1883</div>
+                <div class="timeline-content"><h3>Смерть в Буживале</h3><p>3 сентября (22 августа) скончался во Франции. Похоронен на Волковском кладбище в Санкт-Петербурге.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works">
+        <h2 class="section-title">Главные произведения</h2>
+        <div class="works-grid">
+            <div class="work-card"><h3>«Записки охотника»</h3><div class="year">1847–1852</div><p>Цикл из 25 рассказов, проникнутых любовью к народу и природе. «Бежин луг», «Хорь и Калиныч» — знаковые новеллы.</p></div>
+            <div class="work-card"><h3>«Муму»</h3><div class="year">1852</div><p>Пронзительный рассказ о глухонемом дворнике Герасиме — обличение жестокости крепостничества.</p></div>
+            <div class="work-card"><h3>«Рудин»</h3><div class="year">1856</div><p>Первый роман Тургенева о «лишнем человеке», блестящем ораторе, не способном на решительные действия.</p></div>
+            <div class="work-card"><h3>«Дворянское гнездо»</h3><div class="year">1859</div><p>Лиричнейший роман о любви и долге, размышление о судьбах русского дворянства.</p></div>
+            <div class="work-card"><h3>«Накануне»</h3><div class="year">1860</div><p>Образ болгарина Инсарова — героя, готового отдать жизнь за свободу родины.</p></div>
+            <div class="work-card"><h3>«Отцы и дети»</h3><div class="year">1862</div><p>Великий роман о нигилисте Базарове, конфликте поколений и идеологий. Культовое произведение XIX века.</p></div>
+            <div class="work-card"><h3>«Ася»</h3><div class="year">1858</div><p>Повесть о первой любви, нежности и неспособности сделать решающий шаг.</p></div>
+            <div class="work-card"><h3>«Стихотворения в прозе»</h3><div class="year">1877–1882</div><p>Философские этюды, миниатюры «Русский язык», «Воробей», «Два богача» — жемчужины позднего творчества.</p></div>
+        </div>
+    </section>
+
+    <section id="illu-gallery">
+        <h2 class="section-title">Иллюстрации к произведениям</h2>
+        <div class="gallery">
+            <div class="illus"><img class="illus-img" src="D:\главный стол\Новая папка (4)\1446_2.jpg"" alt="Бежин луг"><p>«Бежин луг» — иллюстрация П. Соколова (1890)</p></div>
+            <div class="illus"><img class="illus-img" src="D:\главный стол\Новая папка (4)\i.png"><p>Евгений Базаров — рисунок Д. Боровского к роману «Отцы и дети»</p></div>
+            <div class="illus"><img class="illus-img" src="D:\главный стол\Новая папка (4)\i.jpg"<p>«Ася» — иллюстрация В. Домогацкого (1910)</p></div>
+            <div class="illus"><img class="illus-img" src="D:\главный стол\Новая папка (4)\i (1).webp"alt="Дворянское гнездо"><p>Усадебный парк в романе «Дворянское гнездо» (худ. Л. Плахов)</p></div>
+        </div>
+    </section>
+
+    <section id="photo-gallery">
+        <h2 class="section-title">Фотографии писателя и усадьбы</h2>
+        <div class="gallery">
+            <div class="photo-card">
+                <p>Илья Репин. Портрет И.С. Тургенева (1880‑е)</p>
+                  <img class="photo-img" src="D:\главный стол\Новая папка (4)\i (2).webp"
+                <p>Илья Репин. Портрет И.С. Тургенева (1880‑е)</p>  
+            </div>
+            <div class="photo-card">
+                <img class="photo-img" src="D:\главный стол\Новая папка (4)\i (3).webp" alt="Фото Надара 1871">
+                <p>Фотография Феликса Надара, Париж, 1871 г.</p>
+            </div>
+            <div class="photo-card">
+                <img class="photo-img" src="D:\главный стол\Новая папка (4)\i (4).webp">
+                <p>Прижизненная фотография, 1880 г.</p>
+            </div>
+            <div class="photo-card">
+                <img class="photo-img" src="D:\главный стол\Новая папка (4)\i (5).webp" alt="Спасское-Лутовиново">
+                <p>Усадьба Спасское-Лутовиново — музей‑заповедник Тургенева</p>
+            </div>
+            <div class="photo-card">
+                <img class="photo-img" src="D:\главный стол\Новая папка (4)\i (6).webp">
+                <p>Кабинет писателя в мемориальном доме (Спасское-Лутовиново)</p>
+            </div>
+            <div class="photo-card">
+                <img class="photo-img" src="D:\главный стол\Новая папка (4)\i (7).webp" alt="Портрет кисти Броки">
+                <p>Картина К. Броки «И.С. Тургенев за работой» (1870)</p>
+            </div>
+        </div>
+        <p style="margin-top: 20px; font-style: italic; color: #6b5a44; text-align: center;">Все изображения взяты из открытых источников и относятся к общественному достоянию.</p>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Жизнь и творчество И.С. Тургенева | Универсальный сайт‑биография</p>
+        <p style="margin-top: 12px; font-size: 0.85rem;">«Во дни сомнений, во дни тягостных раздумий о судьбах моей родины, — ты один мне поддержка и опора, о великий, могучий, правдивый и свободный русский язык!»</p>
+    </div>
+</footer>
+</body>
+</html>
